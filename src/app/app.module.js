@@ -3,7 +3,11 @@ import 'angular-ui-router';
 
 import { sharedModule } from 'shared/shared.module';
 
-const appModule = angular.module('app', ['shared']);
+import appRoutes from './app.routes';
 
+const appModule = angular.module('app', ['shared', 'ui.router']);
+
+appModule
+  .config(appRoutes);
 
 export default appModule;
