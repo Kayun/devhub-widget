@@ -1,10 +1,5 @@
-import { RATIO_ROUTES } from './components/ratio/ratio.routes';
-
-export default function appRoutes($stateProvider, $urlRouterProvider) {
-  $stateProvider
-    .state('main', RATIO_ROUTES);
-
+export default function appRoutes($urlRouterProvider) {
   $urlRouterProvider.otherwise('/');
 }
 
-appRoutes.$inject = ['$stateProvider', '$urlRouterProvider'];
+appRoutes.$inject = ['$urlRouterProvider'];
