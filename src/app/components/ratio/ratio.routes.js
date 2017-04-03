@@ -7,3 +7,9 @@ export const RATIO_ROUTES = {
   controllerAs: 'ctrl',
   template: ratioView
 }
+
+export function ratioRoutesProvider($stateProvider) {
+  $stateProvider.state('ratio', RATIO_ROUTES);
+}
+
+ratioRoutesProvider.$inject = ['$stateProvider'];
