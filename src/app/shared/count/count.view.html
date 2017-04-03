@@ -1,0 +1,14 @@
+<div class="count">
+  <input type="text" ng-model="ctrl.value" class="count__input">
+
+  <button type="button" ng-click="ctrl.incr()"
+          ng-disabled="ctrl.value >= ctrl.max"
+          class="count__button count__button_up"
+  ></button>
+
+  <button type="button" ng-click="ctrl.decr()"
+          ng-disabled="ctrl.value <= ctrl.min"
+          class="count__button count__button_down"
+  ></button>
+</div>
+

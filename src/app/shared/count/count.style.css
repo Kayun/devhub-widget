@@ -1,0 +1,72 @@
+.count {
+  position: relative;
+  display: inline-block;
+}
+
+.count__input {
+  padding: 0 35px 0 5px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  outline: none;
+  line-height: 26px;
+  vertical-align: top;
+  transition: border-color .3s ease
+}
+
+.count__input:focus {
+  border-color: #1c6cee;
+}
+
+.count__button {
+  position: absolute;
+  right: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  width: 30px;
+  height: 50%;
+  cursor: pointer;
+  outline: none;
+  opacity: .5;
+  transition: opacity .3s ease
+}
+
+.count__button:not(:disabled):hover {
+  opacity: 1;
+}
+
+.count__button:disabled {
+  cursor: default;
+}
+
+.count__button:disabled:before {
+  border-color: #ccc;
+}
+
+.count__button:before {
+  position: absolute;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-bottom: 1px solid #1c6cee;
+  border-right: 1px solid #1c6cee;
+  content: '';
+}
+
+.count__button_up {
+  top: 0;
+}
+
+.count__button_up:before {
+  top: 6px;
+  transform: translateX(-50%) rotate(-135deg)
+}
+
+.count__button_down {
+  bottom: 0;
+}
+
+.count__button_down:before {
+  bottom: 6px;
+  transform: translateX(-50%) rotate(45deg)
+}
