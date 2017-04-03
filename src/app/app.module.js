@@ -1,13 +1,14 @@
 import angular from 'angular';
 import 'angular-ui-router';
 
-import { sharedModule } from 'shared/shared.module';
+import 'shared/shared.module';
+import 'components/ratio/ratio.module';
 
 import appRoutes from './app.routes';
 
-const appModule = angular.module('app', ['shared', 'ui.router']);
+const APP_MODULE = angular.module('app', ['ui.router', 'shared', 'ratio']);
 
-appModule
+APP_MODULE
   .config(appRoutes);
 
-export default appModule;
+export default APP_MODULE;

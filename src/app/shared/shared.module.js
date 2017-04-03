@@ -3,7 +3,9 @@ import angular from 'angular';
 import './slider/slider.index';
 import { CountDirective } from './count/count.directive';
 
-export const sharedModule = angular.module('shared', ['rzModule']);
+const SHARED_MODULE = angular.module('shared', ['rzModule']);
 
-sharedModule
+SHARED_MODULE
   .directive('count', CountDirective.createInstance);
+
+export default SHARED_MODULE;
