@@ -1,1 +1,2 @@
-let angular = require('angular');
+import 'normalize.css';
+import './app/app.module';
