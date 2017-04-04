@@ -2,6 +2,7 @@ let webpack = require('webpack');
 let path = require('path');
 let CleanWebpackPlugin = require('clean-webpack-plugin');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
+let CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
@@ -37,6 +38,9 @@ module.exports = {
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
     new CleanWebpackPlugin(['dist']),
+    new CopyWebpackPlugin([
+      { from: 'data', to: 'data' }
+    ]),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/index.html')
     }),
