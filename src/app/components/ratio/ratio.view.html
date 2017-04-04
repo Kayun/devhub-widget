@@ -21,15 +21,18 @@
     <div class="ratio__item" ng-repeat="item in ctrl.items">
       <div class="ratio__text">{{ item.Name }}</div>
       <rzslider rz-slider-model="item.Percent"
-                rz-slider-options="ctrl.sliderOptions"
+                rz-slider-options="ctrl.extendOptions({id: item.ID})"
                 class="ratio__slider"
       ></rzslider>
-      <count value="item.Percent" min="0" max="100" class="ratio__count"></count>
+      <count value="item.Percent"
+             min="0" max="100"
+             class="ratio__count"
+             change="ctrl.listenerHandler(item.ID)"></count>
     </div>
 
   </div>
 
-  <div class="ratio__footer">
+  <div class="ratio__footer" ng-if="ctrl.items.length">
     <h2 class="ratio__footer-title">Соотношение:</h2>
     <ul class="ratio__list">
       <li ng-repeat="item in ctrl.items" class="ratio__list-info">

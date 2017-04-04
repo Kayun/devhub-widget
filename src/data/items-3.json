@@ -2,15 +2,15 @@
   "Items": [
     {
       "Name": "Item 1",
-      "Percent": 0
+      "Percent": 45
     },
     {
       "Name": "Item 2",
-      "Percent": 0
+      "Percent": 56
     },
     {
       "Name": "Item 3",
-      "Percent": 0
+      "Percent": 89
     }
   ]
 }
