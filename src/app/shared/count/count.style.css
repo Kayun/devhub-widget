@@ -8,8 +8,10 @@
   border: 1px solid #ccc;
   border-radius: 2px;
   outline: none;
+  width: 100%;
   line-height: 26px;
   vertical-align: top;
+  box-sizing: border-box;
   transition: border-color .3s ease
 }
 
