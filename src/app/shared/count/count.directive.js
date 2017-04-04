@@ -9,7 +9,7 @@ export class CountDirective {
     return new CountDirective();
   }
 
-  constructor() {
+  constructor($scope) {
     this.restrict = 'E';
     this.replace = true;
     this.template = countView;
@@ -23,28 +23,45 @@ export class CountDirective {
     this.bindToController = true;
   }
 
-  link(scope, element, attrs) {
-    this.input = element.find('input');
-    this.input
-      .on('keypress', this.onKeypress.bind(this))
-      .on('input', this.onInput.bind(this))
+  link(scope, element, attrs, ctrl) {
+    ctrl.init();
+
+    element.find('input')
+      .on('keypress', this.onKeypress.bind(ctrl))
+      .on('input', this.onInput.bind(ctrl))
   }
 
   onInput(event) {
-    let value = this.input.val();
-    let dotIndex = value.indexOf('.')
+
+    let target = event.target;
+    let newValue = target.value;
+    let dotIndex = newValue.indexOf('.')
 
     if (event.data === ',') {
-      this.input.val(value.replace(',', '.'));
+      newValue = newValue.replace(',', '.');
+      target.value = newValue;
     }
 
-    if (value.indexOf('.') !== -1) {
-      let subValue = value.slice(0, value.indexOf('.') + 3);
-      this.input.val(subValue);
+    if (parseInt(newValue) >= this.max) {
+      target.value = newValue.slice(0, -1);
+      return false;
     }
+
+    if (parseInt(newValue) < this.min) {
+      target.value = this.min;
+      return false;
+    }
+
+    if (newValue.toString().indexOf('.') !== -1) {
+      newValue = newValue.slice(0, newValue.indexOf('.') + 3);
+      target.value = newValue;
+    }
+
+    this.$scope.$apply(() => this.value = newValue);
   }
 
   onKeypress(event) {
+    event.stopPropagation();
 
     let isNotDigit = /[^\d.,]/.test(String.fromCharCode(event.charCode));
 
@@ -53,13 +70,14 @@ export class CountDirective {
       return false;
     }
 
-    let value = this.input.val();
-    let idDot = /[.,]/.test(String.fromCharCode(event.charCode));
+    let value = this.value.toString();
+    let isDot = /[.,]/.test(String.fromCharCode(event.charCode));
 
-    if ((value.indexOf('.') !== -1 || value.indexOf(',') !== -1) && idDot) {
+    if ((value.indexOf('.') !== -1 || value.indexOf(',') !== -1) && isDot) {
       event.preventDefault();
-      return false;
     }
   }
 
 }
+
+CountDirective.$inject = [ '$scope' ];
