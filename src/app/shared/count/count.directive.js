@@ -18,14 +18,13 @@ export class CountDirective {
     this.scope = {
       value: '=',
       min: '@',
-      max: '@'
+      max: '@',
+      change: '&'
     }
     this.bindToController = true;
   }
 
   link(scope, element, attrs, ctrl) {
-    ctrl.init();
-
     element.find('input')
       .on('keypress', this.onKeypress.bind(ctrl))
       .on('input', this.onInput.bind(ctrl))
@@ -42,7 +41,7 @@ export class CountDirective {
       target.value = newValue;
     }
 
-    if (parseInt(newValue) >= this.max) {
+    if (parseInt(newValue) > this.max) {
       target.value = newValue.slice(0, -1);
       return false;
     }
@@ -57,7 +56,7 @@ export class CountDirective {
       target.value = newValue;
     }
 
-    this.$scope.$apply(() => this.value = newValue);
+    this.inputValue = newValue;
   }
 
   onKeypress(event) {
