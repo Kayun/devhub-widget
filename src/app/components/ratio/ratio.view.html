@@ -1,1 +1,40 @@
+<div class="ratio">
+  <h1 class="ratio__title">Сотношение параметров</h1>
+  <div class="ratio__header">
+    <div class="ratio__label">Выберите количество параметров:</div>
+    <div class="ratio__select-wrap">
+
+      <select class="ratio__select"
+              ng-model="ctrl.currentOption"
+              ng-change="ctrl.getOptions(ctrl.currentOption)">
+        <option ng-repeat="option in ctrl.optionsList" value="{{ option }}">
+          {{ option | unitFilter:'элемент':'элемента':'элементов' }}
+        </option>
+      </select>
+
+    </div>
+
+  </div>
+
+  <div class="ratio__body">
+
+    <div class="ratio__item" ng-repeat="item in ctrl.items">
+      <div class="ratio__text">{{ item.Name }}</div>
+      <rzslider rz-slider-model="item.Percent" class="ratio__slider"></rzslider>
+      <count value="item.Percent" min="0" max="100" class="ratio__count"></count>
+    </div>
+
+  </div>
+
+  <div class="ratio__footer">
+    <h2 class="ratio__footer-title">Соотношение:</h2>
+    <ul class="ratio__list">
+      <li ng-repeat="item in ctrl.items" class="ratio__list-info">
+        {{ item.Name }}: <span>{{ item.Percent }}%</span>
+      </li>
+    </ul>
+
+  </div>
+
+</div>
 
