@@ -1,0 +1,31 @@
+.rzslider .rz-bar-wrapper {
+  height: 28px;
+  padding-top: 14px;
+  margin-top: -14px;
+}
+
+.rzslider .rz-bar {
+  background-color: rgba(28, 108, 238, 0.25);
+}
+
+.rzslider .rz-pointer {
+  top: -12px;
+  width: 28px;
+  height: 28px;
+  background-color: rgb(28, 108, 238);
+  outline: none;
+}
+
+.rzslider .rz-pointer.rz-active:after {
+  background-color: rgb(28, 108, 238);
+}
+
+.rzslider .rz-pointer:after {
+  top: 10px;
+  left: 10px;
+  transition: background-color .3s ease;
+}
+
+.rzslider .rz-limit {
+  display: none;
+}
