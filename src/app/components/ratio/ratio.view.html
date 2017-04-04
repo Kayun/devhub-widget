@@ -20,7 +20,10 @@
 
     <div class="ratio__item" ng-repeat="item in ctrl.items">
       <div class="ratio__text">{{ item.Name }}</div>
-      <rzslider rz-slider-model="item.Percent" class="ratio__slider"></rzslider>
+      <rzslider rz-slider-model="item.Percent"
+                rz-slider-options="ctrl.sliderOptions"
+                class="ratio__slider"
+      ></rzslider>
       <count value="item.Percent" min="0" max="100" class="ratio__count"></count>
     </div>
 
