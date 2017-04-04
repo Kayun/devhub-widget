@@ -60,7 +60,7 @@
 
 .ratio__item {
   display: flex;
-  align-items: baseline;
+  align-items: center;
 }
 
 .ratio__item:not(:last-child) {
@@ -85,6 +85,8 @@
 
 .ratio__count {
   width: 80px;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .ratio__footer {
